@@ -1,0 +1,73 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="overflow-x-auto rounded-lg border border-gray-200 m-12">
+  <table
+    class="min-w-full w-full divide-y-2 divide-gray-200 bg-white text-sm table-fixed"
+  >
+    <thead>
+      <tr>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          Employee
+        </th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          3/24
+        </th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          3/25
+        </th>
+        <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+          3/26
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=1 col=1 cell_value="PTO" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=1 col=2 cell_value="IV" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=1 col=3 cell_value="FMLA" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=1 col=4 cell_value="IV" %}
+        </td>
+      </tr>
+
+      <tr>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=2 col=1 cell_value="FMLA" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=2 col=2 cell_value="ICU" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=2 col=3 cell_value="FMLA" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=2 col=4 cell_value="FMLA" %}
+        </td>
+      </tr>
+
+      <tr>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=3 col=1 cell_value="FMLA" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=3 col=2 cell_value="ICU" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=3 col=3 cell_value="PTO" %}
+        </td>
+        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+          {% include "apps/partials/cell.html" with row=3 col=4 cell_value="IV" %}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

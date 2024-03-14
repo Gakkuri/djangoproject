@@ -1,0 +1,61 @@
+<div id="cell-{{ row }}-{{ col }}" class="flex justify-between items-center">
+  {% if lock == "LOCK" %}
+  <span class="font-bold text-gray-900 ml-[17px] my-[13px]">{{cell_value}}</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6 cursor-pointer"
+    hx-post="{% url 'apps:lock_update' row col %}"
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}", "X-Value": "{{ cell_value }}", "X-Lock": "{{ lock }}"}'
+    hx-target="#cell-{{ row }}-{{ col }}"
+    hx-trigger="click"
+    hx-swap="outerHTML"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+    />
+  </svg>
+
+  {% else %}
+  <select
+    hx-post="{% url 'apps:cell_update' row col %}"
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    hx-target="#cell-{{ row }}-{{ col }}"
+    hx-trigger="change"
+    hx-swap="outerHTML"
+    name="cell_value"
+    class="m-1 rounded-lg text-gray-700 cursor-pointer sm:text-sm border border-transparent hover:border-gray-300"
+  >
+    <option value="PTO" {% if cell_value == "PTO" %}selected{% endif %}>PTO</option>
+    <option value="IV" {% if cell_value == "IV" %}selected{% endif %}>IV</option>
+    <option value="ICU" {% if cell_value == "ICU" %}selected{% endif %}>ICU</option>
+    <option value="FMLA" {% if cell_value == "FMLA" %}selected{% endif %}>FMLA</option>
+  </select>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6 cursor-pointer"
+    hx-post="{% url 'apps:lock_update' row col %}"
+    hx-headers='{"X-CSRFToken": "{{ csrf_token }}", "X-Value": "{{ cell_value }}" , "X-Lock": "{{ lock }}"}'
+    hx-target="#cell-{{ row }}-{{ col }}"
+    hx-trigger="click"
+    hx-swap="outerHTML"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+    />
+  </svg>
+
+  {% endif %}
+
+</div>
